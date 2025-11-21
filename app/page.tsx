@@ -1,101 +1,86 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function Page() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="min-h-dvh flex flex-col">
+      <header className="px-4 py-4 md:px-6">{/* ... bisa menambahkan nav jika diperlukan ... */}</header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <section className="flex-1 flex items-center justify-center px-4">
+        <div className="text-center max-w-xl mx-auto space-y-6">
+          {/* Logo profil produk */}
+          <div className="mx-auto h-20 w-20 md:h-24 md:w-24 rounded-full overflow-hidden ring-1 ring-border">
+            {/* Menggunakan placeholder image sesuai pedoman */}
+            {/* alt diberikan untuk aksesibilitas */}
+            <img src="/kampus-schedule-ai-logo.jpg" alt="Logo JadwalAI" className="h-full w-full object-cover" />
+          </div>
+
+          {/* Nama produk */}
+          <div>
+            <h1 className="text-3xl md:text-4xl font-semibold text-balance">JadwalAI</h1>
+            <p className="text-muted-foreground mt-2 text-pretty">
+              Asisten chatbot AI untuk menanyakan jadwal mata kuliah harian dengan informasi jam dan ruangan.
+            </p>
+          </div>
+
+          {/* Tombol CTA */}
+          <div>
+            <form action="/schedule-chat" method="GET" className="grid gap-3 max-w-md mx-auto text-left">
+              <label className="grid gap-1">
+                <span className="text-sm text-muted-foreground">Jurusan</span>
+                <select
+                  name="program"
+                  className="bg-background border rounded-md px-3 py-2"
+                  aria-label="Pilih jurusan"
+                  defaultValue="Informatika"
+                >
+                  <option>Informatika</option>
+                  <option>Sistem Informasi</option>
+                  <option>Teknik Komputer</option>
+                </select>
+              </label>
+
+              <label className="grid gap-1">
+                <span className="text-sm text-muted-foreground">Semester</span>
+                <select
+                  name="semester"
+                  className="bg-background border rounded-md px-3 py-2"
+                  aria-label="Pilih semester"
+                  defaultValue="1"
+                >
+                  <option value="1">Semester 1</option>
+                  <option value="2">Semester 2</option>
+                  <option value="3">Semester 3</option>
+                  <option value="4">Semester 4</option>
+                  <option value="5">Semester 5</option>
+                  <option value="6">Semester 6</option>
+                  <option value="7">Semester 7</option>
+                  <option value="8">Semester 8</option>
+                </select>
+              </label>
+
+              <label className="grid gap-1">
+                <span className="text-sm text-muted-foreground">Nama</span>
+                <input
+                  name="name"
+                  placeholder="Nama mahasiswa"
+                  className="bg-background border rounded-md px-3 py-2"
+                  aria-label="Nama mahasiswa"
+                />
+              </label>
+
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-3 text-primary-foreground font-medium"
+                aria-label="Mulai gunakan JadwalAI"
+              >
+                Let&apos;s go
+              </button>
+            </form>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      <footer className="px-4 py-6 text-center text-sm text-muted-foreground">
+        Dibuat untuk membantu penjadwalan kampus secara real-time.
       </footer>
-    </div>
-  );
+    </main>
+  )
 }
